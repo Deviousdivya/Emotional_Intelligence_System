@@ -1,5 +1,9 @@
 # Emotional Intelligence System
 
+**Live demo:** https://emotional-intelligence-system.onrender.com
+
+> Hosted on Render's free tier, so the first visit after a period of inactivity can take about a minute to wake up.
+
 A machine learning project that reads a short reflection alongside daily context, estimates an emotional state and intensity, and offers a practical next step. The repository now includes a local website for trying the complete workflow.
 
 ## Run the website
