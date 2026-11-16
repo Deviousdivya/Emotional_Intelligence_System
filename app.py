@@ -95,7 +95,8 @@ class AppHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    host, port = "127.0.0.1", int(os.environ.get("PORT", "8001"))
+    host = os.environ.get("HOST", "0.0.0.0" if "PORT" in os.environ else "127.0.0.1")
+    port = int(os.environ.get("PORT", "8001"))
     print(f"Emotional Intelligence System running at http://{host}:{port}")
     print(f"Trained from {MODEL.state_model.total_rows:,} local reflections. Journal text is not saved by the server.")
     try:
