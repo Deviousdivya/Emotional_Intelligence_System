@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ee">
+  <meta name="description" content="A gentle emotional check-in grounded in your words and daily context.">
+  <title>Still — emotional intelligence, gently</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <script src="/static/js/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#checkin" aria-label="Still home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>still<span class="brand-period">.</span></span>
+      </a>
+      <p class="brand-caption">A little more in tune.</p>
+
+      <div class="side-label">YOUR SPACE</div>
+      <nav class="primary-nav">
+        <button class="nav-link active" data-view="checkin" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.2s-7.5-4.4-7.5-10a4.1 4.1 0 0 1 7.5-2.1 4.1 4.1 0 0 1 7.5 2.1c0 5.6-7.5 10-7.5 10Z"/><path d="M8.6 12h2l1.1-2.2 1.8 4.4 1.1-2.2h.8"/></svg>
+          <span>Daily check-in</span>
+          <span class="nav-dot"></span>
+        </button>
+        <button class="nav-link" data-view="insights" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5h16M6.5 16V10m5 6V5m5 11v-4"/><path d="m5.5 7.5 5.5-3 5 5 3.5-2"/></svg>
+          <span>Your patterns</span>
+        </button>
+        <button class="nav-link" data-view="method" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.8 9.2a2.4 2.4 0 1 1 4.3 1.5c-1.1 1.4-2.1 1.6-2.1 3.1m0 3v.1"/></svg>
+          <span>How it works</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="privacy-card">
+          <div class="privacy-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3m-4 4v2"/></svg></div>
+          <strong>Your words stay here</strong>
+          <p>Check-ins are analyzed on this device and never saved by the server.</p>
+        </div>
+        <div class="model-status"><span class="status-light"></span><span>Local model ready</span></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span> still<span class="brand-period">.</span></div>
+        <div class="breadcrumbs"><span>YOUR SPACE</span><span class="crumb-slash">/</span><span id="current-section">DAILY CHECK-IN</span></div>
+        <div class="topbar-right"><span class="date-label" id="today-date"></span><span class="profile-mark" aria-hidden="true">S</span></div>
+      </header>
+      <nav class="mobile-nav" aria-label="Main navigation">
+        <button class="mobile-nav-link active" data-view="checkin" type="button">Check-in</button>
+        <button class="mobile-nav-link" data-view="insights" type="button">Patterns</button>
+        <button class="mobile-nav-link" data-view="method" type="button">How it works</button>
+      </nav>
+
+      <section class="view active" id="view-checkin" data-page="checkin">
+        <div class="welcome-row">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> A MOMENT FOR YOU</div>
+            <h1>Make room for<br class="desktop-break"> how you feel<span class="heading-period">.</span></h1>
+            <p class="welcome-copy">A few honest words can help you find your next small step.</p>
+          </div>
+          <div class="streak-card">
+            <div class="streak-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13.2 2.8c.4 3.2-2.6 4.3-1.7 7.1.5 1.4 1.9 1.8 2.7.7.7-.9 1-2 .9-3.3 2.3 2.2 4 4.7 4 7.4a7.1 7.1 0 0 1-14.2 0c0-3.5 2.3-6.4 4.4-8.3-.1 2.4.8 3.5 1.5 3.5 1.2 0 1.5-1.9 2.4-7.1Z"/></svg></div>
+            <div><span class="streak-number" id="checkin-count">0</span><span class="streak-caption">check-ins</span></div>
+            <span class="streak-spark" aria-hidden="true">✳</span>
+          </div>
+        </div>
+
+        <div class="checkin-layout">
+          <section class="panel form-panel" aria-labelledby="checkin-title">
+            <div class="panel-heading">
+              <div class="panel-step">01 <span>·</span> REFLECT</div>
+              <div class="panel-illustration" aria-hidden="true"><span class="sun"></span><span class="hill hill-one"></span><span class="hill hill-two"></span></div>
+            </div>
+            <h2 id="checkin-title">What’s on your mind?</h2>
+            <p class="panel-intro">Write whatever feels true. There’s no right way to check in.</p>
+
+            <form id="checkin-form">
+              <label class="field-label" for="journal-text">A few words about today <span class="optional">YOUR NOTE ISN’T SAVED</span></label>
+              <div class="textarea-wrap">
+                <textarea id="journal-text" name="journal_text" maxlength="5000" placeholder="I’ve had a lot on my mind today, but I managed to make some progress..." required></textarea>
+                <div class="textarea-footer"><span>Be as brief or detailed as you like</span><span id="word-count">0 words</span></div>
+              </div>
+
+              <div class="context-heading"><span class="field-label">A LITTLE CONTEXT</span><span class="context-note">Helps the model understand the whole picture</span></div>
+              <div class="range-grid">
+                <div class="range-field">
+                  <div class="range-top"><label for="sleep-hours">Sleep last night</label><span class="range-value"><span id="sleep-value">7</span><small> hrs</small></span></div>
+                  <input id="sleep-hours" name="sleep_hours" type="range" min="0" max="12" value="7" step="0.5" class="range-input">
+                  <div class="range-ends"><span>0</span><span>12</span></div>
+                </div>
+                <div class="range-field">
+                  <div class="range-top"><label for="energy-level">Energy</label><span class="range-value"><span id="energy-value">3</span><small> / 5</small></span></div>
+                  <input id="energy-level" name="energy_level" type="range" min="1" max="5" value="3" class="range-input">
+                  <div class="range-ends"><span>Low</span><span>High</span></div>
+                </div>
+                <div class="range-field">
+                  <div class="range-top"><label for="stress-level">Stress</label><span class="range-value"><span id="stress-value">3</span><small> / 5</small></span></div>
+                  <input id="stress-level" name="stress_level" type="range" min="1" max="5" value="3" class="range-input">
+                  <div class="range-ends"><span>Low</span><span>High</span></div>
+                </div>
+                <div class="range-field">
+                  <div class="range-top"><label for="duration-min">Session length</label><span class="range-value"><span id="duration-value">10</span><small> min</small></span></div>
+                  <input id="duration-min" name="duration_min" type="range" min="0" max="60" value="10" step="5" class="range-input">
+                  <div class="range-ends"><span>0</span><span>60</span></div>
+                </div>
+              </div>
+
+              <div class="select-grid">
+                <div class="select-field"><label class="field-label" for="time-of-day">Time of day</label><select id="time-of-day" name="time_of_day"><option value="early_morning">Early morning</option><option value="morning">Morning</option><option value="afternoon">Afternoon</option><option value="evening">Evening</option><option value="night">Night</option></select></div>
+                <div class="select-field"><label class="field-label" for="ambience-type">Session ambience</label><select id="ambience-type" name="ambience_type"><option value="none">None / not applicable</option><option value="cafe">Cafe</option><option value="forest">Forest</option><option value="mountain">Mountain</option><option value="ocean">Ocean</option><option value="rain">Rain</option></select></div>
+                <div class="select-field"><label class="field-label" for="previous-day-mood">Yesterday felt</label><select id="previous-day-mood" name="previous_day_mood"><option value="unknown">Not sure</option><option value="calm">Calm</option><option value="focused">Focused</option><option value="mixed">Mixed</option><option value="neutral">Neutral</option><option value="overwhelmed">Overwhelming</option><option value="restless">Restless</option></select></div>
+                <div class="select-field"><label class="field-label" for="face-emotion-hint">Face cue</label><select id="face-emotion-hint" name="face_emotion_hint"><option value="none">None / not recorded</option><option value="calm_face">Calm</option><option value="happy_face">Happy</option><option value="neutral_face">Neutral</option><option value="tense_face">Tense</option><option value="tired_face">Tired</option></select></div>
+                <div class="select-field"><label class="field-label" for="reflection-quality">Your reflection</label><select id="reflection-quality" name="reflection_quality"><option value="clear">Pretty clear</option><option value="conflicted">Mixed signals</option><option value="vague">A little vague</option></select></div>
+              </div>
+
+              <button class="analyze-button" id="analyze-button" type="submit"><span class="button-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg></span><span id="button-label">Find my next step</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+              <p class="form-error" id="form-error" role="alert" hidden></p>
+            </form>
+            <p class="soft-disclaimer">A reflective tool, not a diagnosis. You know yourself best.</p>
+          </section>
+
+          <section class="panel result-panel" aria-labelledby="result-title" aria-live="polite">
+            <div class="result-header"><div><div class="panel-step">02 <span>·</span> YOUR READOUT</div><h2 id="result-title">A gentle read</h2></div><span class="result-orbit" aria-hidden="true"><span></span></span></div>
+            <div class="result-empty" id="result-empty">
+              <div class="empty-art" aria-hidden="true"><span class="empty-ring ring-a"></span><span class="empty-ring ring-b"></span><span class="empty-center">✳</span><span class="empty-dot dot-a"></span><span class="empty-dot dot-b"></span></div>
+              <h3>Your reflection, held with care.</h3>
+              <p>Share a little about your day and your readout will appear here.</p>
+              <div class="empty-note"><span class="note-star">✳</span> Text and context work together</div>
+            </div>
+            <div class="result-content" id="result-content" hidden>
+              <div class="state-block"><div class="state-kicker">THE MODEL SENSES</div><div class="state-name-row"><h3 id="state-name">Calm</h3><span class="state-confidence" id="confidence-label">—</span></div><div class="confidence-track"><span id="confidence-bar"></span></div><p class="confidence-note" id="confidence-note"></p></div>
+              <div class="intensity-block"><div class="intensity-caption"><span>EMOTIONAL INTENSITY</span><strong><span id="intensity-value">3</span><small> / 5</small></strong></div><div class="intensity-dots" id="intensity-dots" aria-label="Intensity out of five"></div><div class="intensity-words"><span>Gentle</span><span>Strong</span></div></div>
+              <div class="support-quote"><span class="quote-mark">“</span><p id="support-message"></p></div>
+              <div class="next-step-card"><div class="next-step-top"><span class="next-step-icon" id="action-icon" aria-hidden="true">↗</span><span class="next-step-label">A SMALL NEXT STEP</span><span class="timing-pill" id="timing-label">Soon</span></div><h4 id="action-name">Take a short pause</h4><p id="action-description"></p></div>
+              <div class="uncertain-note" id="uncertain-note" hidden><span>◌</span><p>This reflection is a little ambiguous. Consider this a starting point and trust your own read of the moment.</p></div>
+              <details class="model-details"><summary>See the model’s other possibilities</summary><div id="state-score-list" class="score-list"></div></details>
+            </div>
+            <div class="result-footer"><span class="tiny-lock" aria-hidden="true">◈</span> Your writing isn’t stored with this result</div>
+          </section>
+        </div>
+
+        <section class="below-grid">
+          <div class="dataset-card"><div class="dataset-top"><div><span class="panel-step">THE MODEL</span><h2>Built to see the whole picture.</h2></div><span class="dataset-mark" aria-hidden="true">✳</span></div><p>Words tell one part of the story. Sleep, energy and the moment you’re in add the rest.</p><div class="dataset-stats"><div><strong id="training-samples">—</strong><span>training reflections</span></div><div><strong id="state-total">6</strong><span>emotional states</span></div><div><strong>5</strong><span>context signals</span></div></div><button class="text-link" type="button" data-view="method">Explore how it works <span aria-hidden="true">→</span></button></div>
+          <div class="recent-card"><div class="recent-heading"><div><span class="panel-step">A LOOK BACK</span><h2>Your recent check-ins</h2></div><button class="text-link" type="button" data-view="insights">See patterns <span aria-hidden="true">→</span></button></div><div id="recent-checkins" class="recent-list"><div class="history-empty"><span class="history-empty-icon">◌</span><p>Your check-ins will gather here as you go.</p></div></div></div>
+        </section>
+        <footer class="page-footer"><span>STILL <span class="footer-dot">✳</span> A LITTLE MORE IN TUNE</span><span>Built for reflection, with care.</span></footer>
+      </section>
+
+      <section class="view secondary-view" id="view-insights" data-page="insights" hidden>
+        <div class="eyebrow"><span class="eyebrow-line"></span> NOTICING, OVER TIME</div>
+        <h1>Your patterns<span class="heading-period">.</span></h1>
+        <p class="welcome-copy">A small collection of moments, not a scorecard.</p>
+        <div class="insight-summary-grid"><article class="insight-summary"><span class="summary-icon mint">↗</span><span class="summary-label">YOUR CHECK-INS</span><strong id="insight-checkin-total">0</strong><span class="summary-foot">saved in this browser</span></article><article class="insight-summary"><span class="summary-icon peach">✳</span><span class="summary-label">MOST COMMON READ</span><strong class="summary-state" id="insight-top-state">—</strong><span class="summary-foot">based on your check-ins</span></article><article class="insight-summary"><span class="summary-icon lavender">◷</span><span class="summary-label">LAST CHECK-IN</span><strong class="summary-state" id="insight-last-time">—</strong><span class="summary-foot">a moment for yourself</span></article></div>
+        <div class="insights-columns"><article class="panel chart-panel"><div class="panel-step">THE TRAINING DATA</div><h2>Emotions are many things.</h2><p class="panel-intro">These are the states represented in the project’s real training dataset.</p><div id="training-state-chart" class="bar-chart"></div><div class="chart-footnote"><span class="chart-key"></span> Reflections in the training set <strong id="chart-total">—</strong></div></article><article class="panel history-panel"><div class="panel-step">YOUR REFLECTIONS</div><h2>What you’ve noticed</h2><p class="panel-intro">Stored only in this browser. The words you write are never included.</p><div id="full-history" class="full-history"></div><button class="clear-history" id="clear-history" type="button" hidden>Clear local check-in history</button></article></div>
+        <footer class="page-footer"><span>STILL <span class="footer-dot">✳</span> A LITTLE MORE IN TUNE</span><span>Your patterns belong to you.</span></footer>
+      </section>
+
+      <section class="view secondary-view" id="view-method" data-page="method" hidden>
+        <div class="eyebrow"><span class="eyebrow-line"></span> UNDER THE SURFACE</div>
+        <h1>How it works<span class="heading-period">.</span></h1>
+        <p class="welcome-copy">A transparent look at the machine learning and decision rules behind your readout.</p>
+        <div class="method-hero"><div><span class="panel-step">THE IDEA</span><h2>Emotion isn’t just a sentence.</h2><p>Still brings your reflection together with the context around it, then offers one manageable next step. The model can be uncertain; your own perspective always matters more.</p></div><div class="method-orbit" aria-hidden="true"><span class="orbit-circle orbit-outer"></span><span class="orbit-circle orbit-middle"></span><span class="orbit-circle orbit-inner">✳</span><span class="orbit-label label-words">WORDS</span><span class="orbit-label label-context">CONTEXT</span></div></div>
+        <div class="method-steps"><article class="method-step"><span class="method-number">01</span><div><h3>Read the reflection</h3><p>The model looks at word patterns in your note. Short notes are still welcome, though they can be harder to read confidently.</p></div><span class="method-tag">TEXT FEATURES</span></article><article class="method-step"><span class="method-number">02</span><div><h3>Add the context</h3><p>Sleep, energy, stress, session details and time of day give the model more than words alone.</p></div><span class="method-tag">HYBRID MODEL</span></article><article class="method-step"><span class="method-number">03</span><div><h3>Estimate state & intensity</h3><p>Two classifiers trained on the project’s supplied reflections estimate an emotional state and a 1–5 intensity, with a confidence score.</p></div><span class="method-tag">NAIVE BAYES</span></article><article class="method-step"><span class="method-number">04</span><div><h3>Suggest a gentle action</h3><p>A transparent decision layer combines the prediction with energy and time of day to suggest what to try and when.</p></div><span class="method-tag">DECISION RULES</span></article></div>
+        <div class="method-note"><span class="note-star">✳</span><div><strong>What this model can and can’t do</strong><p>It learns patterns from a labeled dataset and offers a reflective prompt. It can misread ambiguity, culture, or context, and it cannot diagnose or replace professional care.</p></div></div>
+        <footer class="page-footer"><span>STILL <span class="footer-dot">✳</span> A LITTLE MORE IN TUNE</span><span>Made for thoughtful check-ins.</span></footer>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
